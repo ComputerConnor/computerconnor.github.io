@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link href="Main.css" rel="stylesheet"/>
+        <script src="jquery-1.10.2.min.js"></script>
+    </head>
+    <body>
+        <div id="frame"></div>
+        
+        <div id="main">
+            <div id="videoPanel">
+                <video id="myVideo" width="625" height="400" src="InsertFileNameHere.mp4"></video>
+            </div>    
+            
+            <!-- <video id="myVideo" width="625" height="400" src="https://www.youtube.com/embed/videoseries?list=PLUxHZoqvor2UpgFni5XMJsUe0gFg4a_vw">frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></video> -->
+            
+            <div id="controls">
+                <div id="seek-bar">
+                    <div id="fill"></div>
+                </div>
+                
+                <table border="0">
+                    <tr>
+                        <td width="55%">
+                            <div id="currentTime">00:00 / 00:00</div>
+                        </td>
+                        <td width="30%">
+                            <img src="Play.png" onclick="playOrPause()" id="playBtn"/>
+                        </td>
+                        <td>
+                            <img src="Speaker.png" id="speaker"/>
+                        </td>
+                        <td>
+                            <input type="range" id="volume" min="0" max="1" value="0.40" step="0.20" onchange="changeVolume()"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+    </body>
+    <script src="JavaScript%20Main.js"></script>
+</html>

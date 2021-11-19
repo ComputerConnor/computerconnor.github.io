@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <title>Music</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class = "w3-btn">
+    <form>
+      <input type="button" value="Home" onclick="history.back()">
+    </form>
+  </div>
+<div id="navbar"></div>
+<h1>Music</h1>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Games..." title="Search for Game">
+
+<ul id="myUL">
+<li>
+<a href="chill/Music Player.html">Chill Playlist</a></li><li>
+<a href="chiptune/Music Player.html">Chiptune Playlist</a></li><li>
+<a href="rap/Music Player.html">Rap Playlist</a></li><li>
+<a href="other/Music Player.html">Other</a></li><li>
+</ul>
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+<script src="js/index.js"></script>
+</body>
+</html>

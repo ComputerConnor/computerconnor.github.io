@@ -1,0 +1,202 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  font-family: 'Ek Mukta';
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 4px;
+  background: #1D1F20;
+}
+
+h1 {
+  margin-top: 5vh;
+  font-size: 2.5rem;
+  max-width: 500px;
+  letter-spacing: 3px;
+  text-align: center;
+  line-height: 1.5;
+  font-family: 'Open Sans';
+  text-transform: capitalize;
+  font-weight: 800;
+  color: #00a27e;
+    
+}
+h1 span {
+  color: #00a27e;
+}
+
+form {
+  position: relative;
+  width: 18rem;
+  margin-top: 8vh;
+  bottom: 0px;
+  right: 100px;
+}
+
+.chosen-value,
+.value-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.chosen-value {
+  font-family: 'Ek Mukta';
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 4px;
+  height: 4rem;
+  font-size: 1.1rem;
+  padding: 1rem;
+  background-color: #FAFCFD;
+  border: 3px solid transparent;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+.chosen-value::-webkit-input-placeholder {
+  color: #333;
+}
+.chosen-value:hover {
+  background-color: #00a27e;
+  cursor: pointer;
+}
+.chosen-value:hover::-webkit-input-placeholder {
+  color: #333;
+}
+.chosen-value:focus, .chosen-value.open {
+  box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.2);
+  outline: 0;
+  background-color: #00a27e;
+  color: #000;
+}
+.chosen-value:focus::-webkit-input-placeholder, .chosen-value.open::-webkit-input-placeholder {
+  color: #000;
+}
+
+.value-list {
+  list-style: none;
+  margin-top: 4rem;
+  box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  max-height: 0;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+.value-list.open {
+  max-height: 320px;
+  overflow: auto;
+}
+.value-list li {
+  position: relative;
+  height: 4rem;
+  background-color: #FAFCFD;
+  padding: 1rem;
+  font-size: 1.1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+  opacity: 1;
+}
+.value-list li:hover {
+  background-color: #00a27e;
+}
+.value-list li.closed {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  opacity: 0;
+}
+.button {
+  border: none;
+  color: #1D1F20;
+  text-align: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  display: inline-block;
+  margin: -20px -50px;
+  cursor: pointer;
+  position:relative;
+  margin-top:20%;
+  font-family: 'Ek Mukta';
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 4px;
+  height: 4rem;
+  font-size: 1.1rem;
+  padding: 1rem;
+  background-color: #FAFCFD;
+  border: 3px solid transparent;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  bottom: 256px;
+  left: 150px;
+  
+}
+.button:hover {
+  background-color: #00a27e;
+  cursor: pointer;
+}
+.button:hover::-webkit-input-placeholder {
+  color: #333;
+}
+.button:hover {
+  background-color: #00a27e;
+}
+#myInput {
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+.w3-btn {
+  position:absolute; 
+  top:0; 
+  left:0;
+}

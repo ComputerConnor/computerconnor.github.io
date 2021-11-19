@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <title>Pick Your Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class = "w3-btn">
+    <form>
+      <input type="button" value="Home" onclick="history.back()">
+    </form>
+  </div>
+<div id="navbar"></div>
+<h1><span>Select</span> <span>Your</span> Game</h1>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Games..." title="Search for Game">
+
+<ul id="myUL">
+<li>
+<a href="https://bomberman-test-3.herokuapp.com/">Bomberman Multiplayer</a></li><li>
+<a href="games/Cookie-Clicker-Beta/index.html">Cookie Clicker 2.02</a></li><li>
+<a href="https://computerconnor.github.io/cookieclicker/">Cookie Clicker 2.03</a></li><li>
+<a href="https://28klotlucas2.github.io/Funkin-Html5/">Friday Night Funkin</a></li><li>
+<a href="https://taisel.github.io/IodineGBA/">GBA Emulator</a></li><li>
+<a href="http://taisel.github.io/GameBoy-Online">GBC Emulator</a></li><li>
+<a href="games/Minesweeper/index.html">Minesweeper</a></li><li>
+<a href="https://project-pokeworld.rshetty.repl.co/">PokeWorld</a></li><li>
+<a href="https://thunderholt.github.io/jsmastersystem/">Sega Genesis</a></li><li>
+<a href="http://whxaxes.github.io/slither/dist/">Slither Clone</a></li><li>
+<a href="games/Snake/index.html">Snake</a></li><li>
+<a href="https://node-multiplayer-snake.herokuapp.com/#top">Snake Multiplayer</a></li><li>
+<a href="games/tetris-multiplayer/index.html">Tetris Multiplayer</a></li><li>
+</ul>
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+<script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+body {
+  background-color: #000000;
+  color: #aaFFaa;
+  }
+
+input {
+  background-color: #330033;
+  color: #aaFFaa;
+  border: solid #00FF00 1px;
+  text-align: center;
+  }
+
+select {
+  background-color: #330033;
+  color: #aaFFaa;
+  border: solid #00FF00 1px;
+  text-align: center;
+  }
+
+#headingBox {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  width: auto;
+  overflow: visible;
+  }
+H1, H2 { margin: 0px; padding: 0px; }
+
+#face {
+  border: none;
+  text-decoration:none;
+  color: #FFFF00;
+  font-size: 52px;
+  }
+#modeBox {
+  position: absolute;
+  border: solid green 1px;
+  top: 0px;
+  right: 0px;
+  z-index: 101;
+  padding-top: 8px;
+  padding-right: 8px;
+  padding-left: 8px;
+  padding-bottom: 0px;
+  }
+
+#modeBoxHandle {
+  border: solid green 1px;
+  text-align: center;
+  -moz-border-radius: 10 10 0 0;
+  }
+
+#modeBoxHandleText {
+  color: #44ff44;
+  text-decoration: none;
+  }
+.minecell {
+  height: 2EM;
+  width: 2EM;
+  text-align:center;
+  font-size: 1.5EM;
+  vertical-align: center;
+  }
+</style>
