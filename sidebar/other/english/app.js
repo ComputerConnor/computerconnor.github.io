@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+//npm install express body-parser sqlite3
 
 const app = express();
 const port = 3000;
@@ -13,6 +15,21 @@ db.serialize(() => {
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/view_entries', (req, res) => {
+    db.all('SELECT * FROM entries ORDER BY name ASC', (err,rows) => {
+        if (err) {
+            console.error('Error retrieving entries:', err);
+            res.status(500).json({ message: 'An error occured. Please try again later.'});
+        } else {
+            res.json({ entries: rows});
+        }
+    });
+});
 
 app.post('/submit', (req, res) => {
     const { name, email } = req.body;
