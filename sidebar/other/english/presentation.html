@@ -15,6 +15,15 @@
             if (isiPhone()) {
                 // If iPhone is detected, use object
                 document.getElementById('pdf-container').innerHTML = '<object data="./Essay.pdf" type="application/pdf" width="100%" height="800px"><p>It appears you don\'t have a PDF plugin for this browser. You can <a href="./Essay.pdf">click here to download the PDF file.</a></p></object>';
+                
+                // Add a download button for iPhone users
+                var downloadButton = document.createElement('a');
+                downloadButton.href = './Essay.pdf';
+                downloadButton.download = 'Essay.pdf';
+                downloadButton.innerHTML = 'Download PDF';
+                
+                // Append the button to the body or any other suitable location
+                document.body.appendChild(downloadButton);
             } else {
                 // Otherwise, use embed
                 document.getElementById('pdf-container').innerHTML = '<embed src="./Essay.pdf" type="application/pdf" width="100%" height="800px" />';
