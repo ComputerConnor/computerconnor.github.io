@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ffd700;
+        }
+
+        #pickButton {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #pickButton:hover {
+            background-color: #45a049;
+        }
+
+        .entry-box {
+            background-color: #555;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.5s ease;
+        }
+
+        .highlighted {
+            animation: highlight 2s ease infinite;
+        }
+
+        .scramble {
+            animation: scramble 0.5s ease infinite;
+        }
+
+        @keyframes highlight {
+            0%, 100% {
+                background-color: #ff9800; /* Final decision color */
+            }
+            50% {
+                background-color: #333;
+            }
+        }
+
+        @keyframes scramble {
+            0%, 100% {
+                background-color: #2196f3; /* Scrambling color */
+            }
+            50% {
+                background-color: #333;
+            }
+        }
+    </style>
+    <title>Raffle Winner Picker</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Raffle Winner Picker</h1>
+        <button id="pickButton">Pick a Random Winner</button>
+        <div class="entries-container" id="entriesContainer"></div>
+    </div>
+    <script src="../pickRandom.js"></script>
+</body>
+</html>
