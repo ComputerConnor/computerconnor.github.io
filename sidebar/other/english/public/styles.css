@@ -59,3 +59,7 @@ button {
 .entry-box p {
     margin: 0;
 }
+.entry-box.highlighted {
+    background-color: #ffcc00; /* Highlight color */
+    border: 2px solid #e69500; /* Highlight border color */
+}
