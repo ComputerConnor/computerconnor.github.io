@@ -57,51 +57,57 @@
 //https://www.aotrvalue.com/missing.png
 const items = [
   //artifacts
-
+  { id: 1, name: "Scars", category: "artifacts", rarity: "mythical", value: 10, valueType: "keys", img: "https://www.aotrvalue.com/scars.png" },
+  { id: 2, name: "Scarf", category: "artifacts", rarity: "mythical", value: 10, valueType: "keys", img: "https://www.aotrvalue.com/scarf.png" },
+  { id: 3, name: "Hoodie", category: "artifacts", rarity: "legendary", value: 2, valueType: "keys", img: "https://www.aotrvalue.com/hoodie.png" },
+  
+  //no value yet
+  { id: 4, name: "Young", category: "artifacts", rarity: "legendary", value: 1, valueType: "keys", img: "https://www.aotrvalue.com/young.png" },
+  
   //cosmetics
 
   //families
-  { id: 1, name: "Fritz", category: "families", rarity: "mythical", value: 1450, valueType: "scrolls", img: "https://www.aotrvalue.com/fritz.png" },
-  { id: 2, name: "Helos", category: "families", rarity: "mythical", min:2200, max:2300, valueType: "scrolls", img: "https://www.aotrvalue.com/helos.png" },
-  { id: 3, name: "Ackerman", category: "families", rarity: "legendary", value: 30, valueType: "scrolls", img: "https://www.aotrvalue.com/ackerman.png" },
-  { id: 4, name: "Yeager", category: "families", rarity: "legendary", value: 20, valueType: "scrolls", img: "https://www.aotrvalue.com/yeager.png" },
-  { id: 5, name: "Reiss", category: "families", rarity: "legendary", value: 10, valueType: "scrolls", img: "https://www.aotrvalue.com/reiss.png" },
-  { id: 6, name: "Arlet", category: "families", rarity: "epic", min: 4, max:5, valueType: "scrolls", img: "https://www.aotrvalue.com/arlert.png" },
-  { id: 7, name: "Leonhart", category: "families", rarity: "epic", min:8, max:10, valueType: "scrolls", img: "https://www.aotrvalue.com/leonhart.png" },
+  { id: 5, name: "Fritz", category: "families", rarity: "mythical", value: 1450, valueType: "scrolls", img: "https://www.aotrvalue.com/fritz.png" },
+  { id: 6, name: "Helos", category: "families", rarity: "mythical", min:2200, max:2300, valueType: "scrolls", img: "https://www.aotrvalue.com/helos.png" },
+  { id: 7, name: "Ackerman", category: "families", rarity: "legendary", value: 30, valueType: "scrolls", img: "https://www.aotrvalue.com/ackerman.png" },
+  { id: 8, name: "Yeager", category: "families", rarity: "legendary", value: 20, valueType: "scrolls", img: "https://www.aotrvalue.com/yeager.png" },
+  { id: 9, name: "Reiss", category: "families", rarity: "legendary", value: 10, valueType: "scrolls", img: "https://www.aotrvalue.com/reiss.png" },
+  { id: 10, name: "Arlet", category: "families", rarity: "epic", min: 4, max:5, valueType: "scrolls", img: "https://www.aotrvalue.com/arlert.png" },
+  { id: 11, name: "Leonhart", category: "families", rarity: "epic", min:8, max:10, valueType: "scrolls", img: "https://www.aotrvalue.com/leonhart.png" },
 
   //gamepasses
 
   //market_items
-  { id: 27, name: "Luck Boost 2HR", category: "market_items", rarity: "legendary", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/luckboost.png" },
-  { id: 28, name: "Gold Boost 2HR", category: "market_items", rarity: "legendary", value: 14, valueType: "keys", img: "https://www.aotrvalue.com/goldboost.png" },
-  { id: 29, name: "XP Boost 2HR", category: "market_items", rarity: "legendary", value: 7, valueType: "keys", img: "https://www.aotrvalue.com/xpboost.png" },
-  { id: 29, name: "Prestige Scroll", category: "market_items", rarity: "rare", value: 3, valueType: "keys", img: "https://www.aotrvalue.com/scroll.png" },
-  { id: 29, name: "Key", category: "market_items", rarity: "epic", value: 1, valueType: "keys", img: "https://www.aotrvalue.com/key.png" },
+  { id: 12, name: "Luck Boost 2HR", category: "market_items", rarity: "legendary", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/luckboost.png" },
+  { id: 13, name: "Gold Boost 2HR", category: "market_items", rarity: "legendary", value: 14, valueType: "keys", img: "https://www.aotrvalue.com/goldboost.png" },
+  { id: 14, name: "XP Boost 2HR", category: "market_items", rarity: "legendary", value: 7, valueType: "keys", img: "https://www.aotrvalue.com/xpboost.png" },
+  { id: 15, name: "Prestige Scroll", category: "market_items", rarity: "rare", value: 3, valueType: "keys", img: "https://www.aotrvalue.com/scroll.png" },
+  { id: 16, name: "Key", category: "market_items", rarity: "epic", value: 1, valueType: "keys", img: "https://www.aotrvalue.com/key.png" },
 
   //perks
-  { id: 8, name: "Founder's Blessing", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/bodyperk.png" },
-  { id: 9, name: "Maximum FIrepower", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/bodyperk.png" },
-  { id: 10, name: "Heavenly Restriction", category: "perks", rarity: "mythical", value: 10, valueType: "keys", img: "https://www.aotrvalue.com/bodyperk.png" },
-  { id: 11, name: "Art of War", category: "perks", rarity: "mythical", value: 30, valueType: "keys", img: "https://www.aotrvalue.com/offenseperk.png" },
-  { id: 12, name: "Black Flash", category: "perks", rarity: "mythical", value: 25, valueType: "keys", img: "https://www.aotrvalue.com/offenseperk.png" },
-  { id: 13, name: "Everlasting Flame", category: "perks", rarity: "mythical", value: 10, valueType: "keys", img: "https://www.aotrvalue.com/offenseperk.png" },
-  { id: 14, name: "Kengo", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/offenseperk.png" },
-  { id: 15, name: "Adaptation", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/defenceperk.png" },
-  { id: 16, name: "Immortal", category: "perks", rarity: "mythical", value: 18, valueType: "keys", img: "https://www.aotrvalue.com/defenceperk.png" },
-  { id: 17, name: "Explosive Forture", category: "perks", rarity: "mythical", value: 15, valueType: "keys", img: "https://www.aotrvalue.com/supportperk.png" },
-  { id: 18, name: "Font of Inspiration", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/supportperk.png" },
-  { id: 19, name: "Soulfeed", category: "perks", rarity: "mythical", value: 15, valueType: "keys", img: "https://www.aotrvalue.com/supportperk.png" },
-  { id: 20, name: "Tatsujin", category: "perks", rarity: "mythical", value: 15, valueType: "keys", img: "https://www.aotrvalue.com/supportperk.png" },
+  { id: 17, name: "Founder's Blessing", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/bodyperk.png" },
+  { id: 18, name: "Maximum FIrepower", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/bodyperk.png" },
+  { id: 19, name: "Heavenly Restriction", category: "perks", rarity: "mythical", value: 10, valueType: "keys", img: "https://www.aotrvalue.com/bodyperk.png" },
+  { id: 20, name: "Art of War", category: "perks", rarity: "mythical", value: 30, valueType: "keys", img: "https://www.aotrvalue.com/offenseperk.png" },
+  { id: 21, name: "Black Flash", category: "perks", rarity: "mythical", value: 25, valueType: "keys", img: "https://www.aotrvalue.com/offenseperk.png" },
+  { id: 22, name: "Everlasting Flame", category: "perks", rarity: "mythical", value: 10, valueType: "keys", img: "https://www.aotrvalue.com/offenseperk.png" },
+  { id: 23, name: "Kengo", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/offenseperk.png" },
+  { id: 24, name: "Adaptation", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/defenceperk.png" },
+  { id: 25, name: "Immortal", category: "perks", rarity: "mythical", value: 18, valueType: "keys", img: "https://www.aotrvalue.com/defenceperk.png" },
+  { id: 26, name: "Explosive Forture", category: "perks", rarity: "mythical", value: 15, valueType: "keys", img: "https://www.aotrvalue.com/supportperk.png" },
+  { id: 27, name: "Font of Inspiration", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/supportperk.png" },
+  { id: 28, name: "Soulfeed", category: "perks", rarity: "mythical", value: 15, valueType: "keys", img: "https://www.aotrvalue.com/supportperk.png" },
+  { id: 29, name: "Tatsujin", category: "perks", rarity: "mythical", value: 15, valueType: "keys", img: "https://www.aotrvalue.com/supportperk.png" },
   
   //serums
-  { id: 21, name: "Armored Serum", category: "serums", rarity: "mythical", value: 25, valueType: "keys", img: "https://www.aotrvalue.com/armourserum.png" },
-  { id: 22, name: "Female Serum", category: "serums", rarity: "mythical", value: 30, valueType: "keys", img: "https://www.aotrvalue.com/femaleserum.png" },
-  { id: 23, name: "Attack Serum", category: "serums", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/attackserum.png" },
+  { id: 30, name: "Armored Serum", category: "serums", rarity: "mythical", value: 25, valueType: "keys", img: "https://www.aotrvalue.com/armourserum.png" },
+  { id: 31, name: "Female Serum", category: "serums", rarity: "mythical", value: 30, valueType: "keys", img: "https://www.aotrvalue.com/femaleserum.png" },
+  { id: 32, name: "Attack Serum", category: "serums", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/attackserum.png" },
   
   //shards
-  { id: 24, name: "Female Shard", category: "shards", rarity: "mythical", min:4, max:5, valueType: "keys", img: "https://www.aotrvalue.com/missing.png" },
-  { id: 25, name: "Armored Shard", category: "shards", rarity: "mythical", value: 6, valueType: "keys", img: "https://www.aotrvalue.com/ArmoredShard.png" },
-  { id: 26, name: "Attack Shard", category: "shards", rarity: "mythical", value: 2, valueType: "keys", img: "https://www.aotrvalue.com/ashard.png" },
+  { id: 33, name: "Female Shard", category: "shards", rarity: "mythical", min:4, max:5, valueType: "keys", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 34, name: "Armored Shard", category: "shards", rarity: "mythical", value: 6, valueType: "keys", img: "https://www.aotrvalue.com/ArmoredShard.png" },
+  { id: 35, name: "Attack Shard", category: "shards", rarity: "mythical", value: 2, valueType: "keys", img: "https://www.aotrvalue.com/ashard.png" },
   
 //titan_skins
 
