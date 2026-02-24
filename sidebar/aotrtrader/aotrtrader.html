@@ -35,10 +35,13 @@
   <h3>Item Pool</h3>
   <select id="categorySelect">
     <option value="all">All</option>
+    <option value="artifacts">Artifacts</option>
+    <option value="boosts">Boosts</option>
+    <option value="cosmetics">Cosmetics</option>
     <option value="families">Families</option>
     <option value="perks">Perks</option>
-    <option value="artifacts">Artifacts</option>
-    <option value="cosmetics">Cosmetics</option>
+    <option value="serums">Serums</option>
+    <option value="shards">Shards</option>
     <option value="titans">Titans</option>
     <option value="weapons">Weapons</option>
   </select>
@@ -55,11 +58,11 @@ const items = [
   //families
   { id: 1, name: "Fritz", category: "families", rarity: "mythical", value: 1450, valueType: "scrolls", img: "https://www.aotrvalue.com/fritz.png" },
   { id: 2, name: "Helos", category: "families", rarity: "mythical", min:2200, max:2300, valueType: "scrolls", img: "https://www.aotrvalue.com/helos.png" },
-  { id: 3, name: "Ackerman", category: "families", rarity: "mythical", value: 30, valueType: "scrolls", img: "https://www.aotrvalue.com/ackerman.png" },
-  { id: 4, name: "Yeager", category: "families", rarity: "mythical", value: 20, valueType: "scrolls", img: "https://www.aotrvalue.com/yeager.png" },
-  { id: 5, name: "Reiss", category: "families", rarity: "mythical", value: 10, valueType: "scrolls", img: "https://www.aotrvalue.com/reiss.png" },
-  { id: 6, name: "Arlet", category: "families", rarity: "mythical", min: 4, max:5, valueType: "scrolls", img: "https://www.aotrvalue.com/arlert.png" },
-  { id: 7, name: "Leonhart", category: "families", rarity: "mythical", min:8, max:10, valueType: "scrolls", img: "https://www.aotrvalue.com/leonhart.png" },
+  { id: 3, name: "Ackerman", category: "families", rarity: "legendary", value: 30, valueType: "scrolls", img: "https://www.aotrvalue.com/ackerman.png" },
+  { id: 4, name: "Yeager", category: "families", rarity: "legendary", value: 20, valueType: "scrolls", img: "https://www.aotrvalue.com/yeager.png" },
+  { id: 5, name: "Reiss", category: "families", rarity: "legendary", value: 10, valueType: "scrolls", img: "https://www.aotrvalue.com/reiss.png" },
+  { id: 6, name: "Arlet", category: "families", rarity: "epic", min: 4, max:5, valueType: "scrolls", img: "https://www.aotrvalue.com/arlert.png" },
+  { id: 7, name: "Leonhart", category: "families", rarity: "epic", min:8, max:10, valueType: "scrolls", img: "https://www.aotrvalue.com/leonhart.png" },
 
   //perks
   { id: 8, name: "Founder's Blessing", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/bodyperk.png" },
@@ -75,9 +78,21 @@ const items = [
   { id: 18, name: "Font of Inspiration", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/supportperk.png" },
   { id: 19, name: "Soulfeed", category: "perks", rarity: "mythical", value: 15, valueType: "keys", img: "https://www.aotrvalue.com/supportperk.png" },
   { id: 20, name: "Tatsujin", category: "perks", rarity: "mythical", value: 15, valueType: "keys", img: "https://www.aotrvalue.com/supportperk.png" },
-  //serum/shards
-
+  
+  //serums
+  { id: 21, name: "Armored Serum", category: "serums", rarity: "mythical", value: 25, valueType: "keys", img: "https://www.aotrvalue.com/armourserum.png" },
+  { id: 22, name: "Female Serum", category: "serums", rarity: "mythical", value: 30, valueType: "keys", img: "https://www.aotrvalue.com/femaleserum.png" },
+  { id: 23, name: "Attack Serum", category: "serums", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/attackserum.png" },
+  
+  //shards
+  { id: 24, name: "Female Shard", category: "shards", rarity: "mythical", min:4, max:5, valueType: "keys", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 25, name: "Armored Shard", category: "shards", rarity: "mythical", value: 6, valueType: "keys", img: "https://www.aotrvalue.com/ArmoredShard.png" },
+  { id: 26, name: "Attack Shard", category: "shards", rarity: "mythical", value: 2, valueType: "keys", img: "https://www.aotrvalue.com/ashard.png" },
+  
   //boosts
+  { id: 27, name: "Luck Boost 2HR", category: "boosts", rarity: "legendary", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/luckboost.png" },
+  { id: 28, name: "Gold Boost 2HR", category: "boosts", rarity: "legendary", value: 14, valueType: "keys", img: "https://www.aotrvalue.com/goldboost.png" },
+  { id: 29, name: "XP Boost 2HR", category: "boosts", rarity: "legendary", value: 7, valueType: "keys", img: "https://www.aotrvalue.com/xpboost.png" },
 
   //artifacts
 
