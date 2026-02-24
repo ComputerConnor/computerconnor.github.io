@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -35,6 +34,7 @@
 
   <h3>Item Pool</h3>
   <select id="categorySelect">
+    <option value="all">All</option>
     <option value="families">Families</option>
     <option value="perks">Perks</option>
     <option value="artifacts">Artifacts</option>
@@ -42,6 +42,8 @@
     <option value="titans">Titans</option>
     <option value="weapons">Weapons</option>
   </select>
+  <br />
+  <input id="searchInput" type="text" placeholder="Search items..." style="margin:8px 0; padding:4px; width:200px;" />
 
   <div id="pool" class="grid"></div>
 
@@ -111,13 +113,14 @@ function formatRange(minScrolls, maxScrolls) {
   return `${minScrolls}-${maxScrolls} scrolls / ${minKeys}-${maxKeys} keys`;
 }
 
-function renderPool(category) {
+function renderPool(category, term = "") {
       const pool = document.getElementById("pool");
       pool.innerHTML = "";
 
       const filtered = items
-        .filter(i => i.category === category)
-        .sort((a, b) => rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity) || b.value - a.value);
+        .filter(i => (category === "all" || i.category === category))
+        .filter(i => (i.name || "").toLowerCase().includes(term.toLowerCase()))
+        .sort((a, b) => rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity) || (b.value||b.max||0) - (a.value||a.max||0));
 
       filtered.forEach(item => {
         const wrap = document.createElement("div");
@@ -153,13 +156,22 @@ function renderPool(category) {
       document.getElementById(valueId).textContent = formatRange(minTotal, maxTotal);
     }
 
-    new Sortable(pool, { group: "shared", animation: 150 });
-    new Sortable(tradeA, { group: "shared", animation: 150, onAdd: () => calculate("tradeA","valueA") });
-    new Sortable(tradeB, { group: "shared", animation: 150, onAdd: () => calculate("tradeB","valueB") });
+    // Pool should CLONE items instead of moving them
+    new Sortable(pool, { group: { name: "shared", pull: "clone", put: false }, sort: false, animation: 150 });
+    new Sortable(tradeA, { group: "shared", animation: 150, onAdd: () => calculate("tradeA","valueA"), onRemove: () => calculate("tradeA","valueA"), onUpdate: () => calculate("tradeA","valueA") });
+    new Sortable(tradeB, { group: "shared", animation: 150, onAdd: () => calculate("tradeB","valueB"), onRemove: () => calculate("tradeB","valueB"), onUpdate: () => calculate("tradeB","valueB") });
 
-    document.getElementById("categorySelect").addEventListener("change", e => renderPool(e.target.value));
+    const categorySelect = document.getElementById("categorySelect");
+    const searchInput = document.getElementById("searchInput");
 
-    renderPool("families");
+    function refreshPool() {
+      renderPool(categorySelect.value, searchInput.value);
+    }
+
+    categorySelect.addEventListener("change", refreshPool);
+    searchInput.addEventListener("input", refreshPool);
+
+    renderPool("all");
   </script>
 </body>
 </html>
