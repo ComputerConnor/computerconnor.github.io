@@ -15,6 +15,8 @@
     .rarity-epic { border-color:#8e24aa; }
     .rarity-rare { border-color:#1e88e5; }
     .rarity-common { border-color:#9e9e9e; }
+    .rarity-uncommon { border-color:lawngreen; }
+    .rarity-event {border-color:orange; }
     .item-wrap { width: 60px; text-align: center; }
     .caption { font-size: 11px; line-height: 1.1; word-wrap: break-word; margin-top: 2px; }
     .grid { display: grid; grid-template-columns: repeat(10, 60px); gap: 5px; }
@@ -71,6 +73,24 @@ const items = [
   { id: 4, name: "Young", category: "artifacts", rarity: "legendary", value: 1, valueType: "keys", img: "https://www.aotrvalue.com/young.png" },
   
   //cosmetics
+  { id: 4, name: "Bambi Wings", category: "cosmetics", rarity: "legendary", min: 9900, max: 10200, valueType: "scrolls", img: "https://www.aotrvalue.com/bambi.png" },
+  { id: 4, name: "Ulq Wings", category: "cosmetics", rarity: "legendary", value: 8700, valueType: "scrolls", img: "https://www.aotrvalue.com/ulqwings.png" },
+  { id: 4, name: "Toji's Attire", category: "cosmetics", rarity: "legendary", value: 10800, valueType: "scrolls", img: "https://www.aotrvalue.com/toji.png" },
+  { id: 4, name: "Primera's Attire", category: "cosmetics", rarity: "legendary", value: 4200, valueType: "scrolls", img: "https://www.aotrvalue.com/primera.png" },
+  { id: 4, name: "Mahoraga's Wheel", category: "cosmetics", rarity: "epic", value: 2200, valueType: "scrolls", img: "https://www.aotrvalue.com/maho.png" },
+  { id: 4, name: "Cursed Markings", category: "cosmetics", rarity: "legendary", value: 2000, valueType: "scrolls", img: "https://www.aotrvalue.com/sukunamarking.png" },
+  { id: 4, name: "Captain's Attire", category: "cosmetics", rarity: "epic", value: 1000, valueType: "scrolls", img: "https://www.aotrvalue.com/captain.png" },
+  { id: 4, name: "Quincy's Attire", category: "cosmetics", rarity: "epic", value: 350, valueType: "scrolls", img: "https://www.aotrvalue.com/quincy.png" },
+  { id: 4, name: "Geto's Attire", category: "cosmetics", rarity: "epic", min: 240, max: 250, valueType: "scrolls", img: "https://www.aotrvalue.com/getto.png" },
+  { id: 4, name: "Vizard's Mask", category: "cosmetics", rarity: "mythical", min: 225, max: 250, valueType: "scrolls", img: "https://www.aotrvalue.com/vizardmask.png" },
+  { id: 4, name: "Gojo's Blindfold", category: "cosmetics", rarity: "uncommon", value: 30, valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 4, name: "Utahime's Attire", category: "cosmetics", rarity: "uncommon", value: 30, valueType: "scrolls", img: "https://www.aotrvalue.com/utahime.png" },
+  { id: 4, name: "Toshiro Scarf", category: "cosmetics", rarity: "epic", min: 10, max: 15, valueType: "scrolls", img: "https://www.aotrvalue.com/captain.png" },
+  { id: 4, name: "Giyuu's Attire(+)", category: "cosmetics", rarity: "epic", value: 35, valueType: "scrolls", img: "https://www.aotrvalue.com/quincy.png" },
+  { id: 4, name: "Axe Head", category: "cosmetics", rarity: "event", value: 100, valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 4, name: "Green Aura With Flies", category: "cosmetics", rarity: "event", value: 70, valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 4, name: "Cracked Shell", category: "cosmetics", rarity: "event", min: 10, max: 15, valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 4, name: "Blade Head", category: "cosmetics", rarity: "event", min: 40, max: 45,  valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
 
   //families
   { id: 5, name: "Fritz", category: "families", rarity: "mythical", value: 1450, valueType: "scrolls", img: "https://www.aotrvalue.com/fritz.png" },
@@ -112,17 +132,24 @@ const items = [
   { id: 32, name: "Attack Serum", category: "serums", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/attackserum.png" },
   
   //shards
-  { id: 33, name: "Female Shard", category: "shards", rarity: "legendary", min:4, max:5, valueType: "keys", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 33, name: "Female Shard", category: "shards", rarity: "legendary", min: 4, max: 5, valueType: "keys", img: "https://www.aotrvalue.com/missing.png" },
   { id: 34, name: "Armored Shard", category: "shards", rarity: "legendary", value: 6, valueType: "keys", img: "https://www.aotrvalue.com/ArmoredShard.png" },
   { id: 35, name: "Attack Shard", category: "shards", rarity: "legendary", value: 2, valueType: "keys", img: "https://www.aotrvalue.com/ashard.png" },
   
 //titan_skins
+  { id: 33, name: "Oni", category: "titan_skins", rarity: "mythical", value: 1200, valueType: "scrolls", img: "https://www.aotrvalue.com/onieren.png" },
+  { id: 33, name: "Jotunn", category: "titan_skins", rarity: "mythical", min: 300, max:320, valueType: "scrolls", img: "https://www.aotrvalue.com/jotunn.png" },
+  { id: 33, name: "Deus", category: "titan_skins", rarity: "mythical", min: 4, max: 5, valueType: "keys", img: "https://www.aotrvalue.com/deus.png" },
+  { id: 33, name: "Moai", category: "titan_skins", rarity: "mythical", value: 200, valueType: "scrolls", img: "https://www.aotrvalue.com/moai.png" },
+  { id: 33, name: "Equinox Moon", category: "titan_skins", rarity: "mythical", min: 4, max: 5, valueType: "keys", img: "https://www.aotrvalue.com/EquinoxMoon.png" },
+  { id: 33, name: "Grumpy", category: "titan_skins", rarity: "mythical", min: 4, max: 5, valueType: "keys", img: "https://www.aotrvalue.com/grumpy.png" },
+  { id: 33, name: "Forsaken", category: "titan_skins", rarity: "mythical", value: 130, valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
 
 //weapons
 
 ];
 
-    const rarityOrder = ["mythical", "legendary", "epic", "rare", "common"];
+    const rarityOrder = ["mythical", "event", "legendary", "epic", "rare", "uncommon", "common"];
 
     // Convert any value to scrolls (base unit)
 function toScrolls(value, type) {
@@ -215,7 +242,6 @@ function renderPool(category, term = "") {
         el.title = formatRange(min, max);
         calculate(boxId, valueId);
       });
-      document.getElementById(valueId).textContent = formatRange(minTotal, maxTotal);
     }
 
     // Pool clones; dropping back into pool deletes (acts like remove)
