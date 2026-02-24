@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,7 +9,12 @@
     body { font-family: Arial, sans-serif; margin: 20px; }
     .trade-area { display: flex; gap: 20px; margin-bottom: 20px; }
     .box { width: 300px; min-height: 200px; border: 2px dashed #aaa; padding: 10px; }
-    .item { width: 50px; height: 50px; cursor: grab; }
+    .item { width: 50px; height: 50px; cursor: grab; border:3px solid transparent; }
+    .rarity-mythical { border-color:#e53935; }
+    .rarity-legendary { border-color:#fdd835; }
+    .rarity-epic { border-color:#8e24aa; }
+    .rarity-rare { border-color:#1e88e5; }
+    .rarity-common { border-color:#9e9e9e; }
     .item-wrap { width: 60px; text-align: center; }
     .caption { font-size: 11px; line-height: 1.1; word-wrap: break-word; margin-top: 2px; }
     .grid { display: grid; grid-template-columns: repeat(10, 60px); gap: 5px; }
@@ -76,6 +82,7 @@ const items = [
   { id: 11, name: "Leonhart", category: "families", rarity: "epic", min:8, max:10, valueType: "scrolls", img: "https://www.aotrvalue.com/leonhart.png" },
 
   //gamepasses
+  { id: 12, name: "12 FPS", category: "gamepasses", rarity: "legendary", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/missing.png" },
 
   //market_items
   { id: 12, name: "Luck Boost 2HR", category: "market_items", rarity: "legendary", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/luckboost.png" },
@@ -105,9 +112,9 @@ const items = [
   { id: 32, name: "Attack Serum", category: "serums", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/attackserum.png" },
   
   //shards
-  { id: 33, name: "Female Shard", category: "shards", rarity: "mythical", min:4, max:5, valueType: "keys", img: "https://www.aotrvalue.com/missing.png" },
-  { id: 34, name: "Armored Shard", category: "shards", rarity: "mythical", value: 6, valueType: "keys", img: "https://www.aotrvalue.com/ArmoredShard.png" },
-  { id: 35, name: "Attack Shard", category: "shards", rarity: "mythical", value: 2, valueType: "keys", img: "https://www.aotrvalue.com/ashard.png" },
+  { id: 33, name: "Female Shard", category: "shards", rarity: "legendary", min:4, max:5, valueType: "keys", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 34, name: "Armored Shard", category: "shards", rarity: "legendary", value: 6, valueType: "keys", img: "https://www.aotrvalue.com/ArmoredShard.png" },
+  { id: 35, name: "Attack Shard", category: "shards", rarity: "legendary", value: 2, valueType: "keys", img: "https://www.aotrvalue.com/ashard.png" },
   
 //titan_skins
 
@@ -162,9 +169,13 @@ function renderPool(category, term = "") {
         img.className = "item";
 
         const range = normalizeValue(item);
+        img.dataset.baseMin = range.min;
+        img.dataset.baseMax = range.max;
         img.dataset.min = range.min;
         img.dataset.max = range.max;
+        img.dataset.qty = 1;
         img.title = formatRange(range.min, range.max);
+        img.classList.add(`rarity-${item.rarity}`);
 
         const caption = document.createElement("div");
         caption.className = "caption";
@@ -188,19 +199,34 @@ function renderPool(category, term = "") {
     }
 
     // Click to remove items from trade boxes
-    function enableRemoval(boxId, valueId) {
+    // Click item to set quantity
+    function enableQuantity(boxId, valueId) {
       const box = document.getElementById(boxId);
       box.addEventListener("click", (e) => {
-        if (e.target.classList.contains("item")) {
-          e.target.parentElement.remove();
-          calculate(boxId, valueId);
-        }
+        if (!e.target.classList.contains("item")) return;
+        const el = e.target;
+        const qty = Number(prompt("Enter quantity:", el.dataset.qty || 1));
+        if (!qty || qty < 1) return;
+        el.dataset.qty = qty;
+        const min = Number(el.dataset.baseMin) * qty;
+        const max = Number(el.dataset.baseMax) * qty;
+        el.dataset.min = min;
+        el.dataset.max = max;
+        el.title = formatRange(min, max);
+        calculate(boxId, valueId);
       });
       document.getElementById(valueId).textContent = formatRange(minTotal, maxTotal);
     }
 
-    // Pool should CLONE items instead of moving them
-    new Sortable(pool, { group: { name: "shared", pull: "clone", put: false }, sort: false, animation: 150 });
+    // Pool clones; dropping back into pool deletes (acts like remove)
+    new Sortable(pool, {
+      group: { name: "shared", pull: "clone", put: true },
+      sort: false,
+      animation: 150,
+      onAdd: (evt) => {
+        if (evt.from.id !== "pool") evt.item.remove();
+      }
+    });
     new Sortable(tradeA, { group: "shared", animation: 150, onAdd: () => calculate("tradeA","valueA"), onRemove: () => calculate("tradeA","valueA"), onUpdate: () => calculate("tradeA","valueA") });
     new Sortable(tradeB, { group: "shared", animation: 150, onAdd: () => calculate("tradeB","valueB"), onRemove: () => calculate("tradeB","valueB"), onUpdate: () => calculate("tradeB","valueB") });
 
@@ -214,8 +240,8 @@ function renderPool(category, term = "") {
     categorySelect.addEventListener("change", refreshPool);
     searchInput.addEventListener("input", refreshPool);
 
-    enableRemoval("tradeA", "valueA");
-    enableRemoval("tradeB", "valueB");
+    enableQuantity("tradeA", "valueA");
+    enableQuantity("tradeB", "valueB");
 
     renderPool("all");
   </script>
