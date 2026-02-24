@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trade Value Calculator</title>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .trade-area { display: flex; gap: 20px; margin-bottom: 20px; }
+    .box { width: 300px; min-height: 200px; border: 2px dashed #aaa; padding: 10px; }
+    .item { width: 50px; height: 50px; cursor: grab; }
+    .item-wrap { width: 60px; text-align: center; }
+    .caption { font-size: 11px; line-height: 1.1; word-wrap: break-word; margin-top: 2px; }
+    .grid { display: grid; grid-template-columns: repeat(10, 60px); gap: 5px; }
+    select { margin-bottom: 10px; }
+    .value { font-size: 18px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Trade Value Calculator</h1>
+
+  <div class="trade-area">
+    <div>
+      <h3>Your Trade</h3>
+      <div id="tradeA" class="box"></div>
+      <div class="value">Value: <span id="valueA">0</span></div>
+    </div>
+    <div>
+      <h3>Their Trade</h3>
+      <div id="tradeB" class="box"></div>
+      <div class="value">Value: <span id="valueB">0</span></div>
+    </div>
+  </div>
+
+  <h3>Item Pool</h3>
+  <select id="categorySelect">
+    <option value="families">Families</option>
+    <option value="perks">Perks</option>
+    <option value="artifacts">Artifacts</option>
+    <option value="cosmetics">Cosmetics</option>
+    <option value="titans">Titans</option>
+    <option value="weapons">Weapons</option>
+  </select>
+
+  <div id="pool" class="grid"></div>
+
+  <script>
+    // Values are stored internally in SCROLLS (base unit)
+// Use valueType: 'scrolls' or 'keys' when defining items
+//https://www.aotrvalue.com/missing.png
+const items = [
+  //families
+  { id: 1, name: "Fritz", category: "families", rarity: "mythical", value: 1450, valueType: "scrolls", img: "https://www.aotrvalue.com/fritz.png" },
+  { id: 2, name: "Helos", category: "families", rarity: "mythical", min:2200, max:2300, valueType: "scrolls", img: "https://www.aotrvalue.com/helos.png" },
+  { id: 3, name: "Ackerman", category: "families", rarity: "mythical", value: 30, valueType: "scrolls", img: "https://www.aotrvalue.com/ackerman.png" },
+  { id: 4, name: "Yeager", category: "families", rarity: "mythical", value: 20, valueType: "scrolls", img: "https://www.aotrvalue.com/yeager.png" },
+  { id: 5, name: "Reiss", category: "families", rarity: "mythical", value: 10, valueType: "scrolls", img: "https://www.aotrvalue.com/reiss.png" },
+  { id: 6, name: "Arlet", category: "families", rarity: "mythical", min: 4, max:5, valueType: "scrolls", img: "https://www.aotrvalue.com/arlert.png" },
+  { id: 7, name: "Leonhart", category: "families", rarity: "mythical", min:8, max:10, valueType: "scrolls", img: "https://www.aotrvalue.com/leonhart.png" },
+
+  //perks
+  { id: 8, name: "Founder's Blessing", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/bodyperk.png" },
+  { id: 9, name: "Maximum FIrepower", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/bodyperk.png" },
+  { id: 10, name: "Heavenly Restriction", category: "perks", rarity: "mythical", value: 10, valueType: "keys", img: "https://www.aotrvalue.com/bodyperk.png" },
+  { id: 11, name: "Art of War", category: "perks", rarity: "mythical", value: 30, valueType: "keys", img: "https://www.aotrvalue.com/offenseperk.png" },
+  { id: 12, name: "Black Flash", category: "perks", rarity: "mythical", value: 25, valueType: "keys", img: "https://www.aotrvalue.com/offenseperk.png" },
+  { id: 13, name: "Everlasting Flame", category: "perks", rarity: "mythical", value: 10, valueType: "keys", img: "https://www.aotrvalue.com/offenseperk.png" },
+  { id: 14, name: "Kengo", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/offenseperk.png" },
+  { id: 15, name: "Adaptation", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/defenceperk.png" },
+  { id: 16, name: "Immortal", category: "perks", rarity: "mythical", value: 18, valueType: "keys", img: "https://www.aotrvalue.com/defenceperk.png" },
+  { id: 17, name: "Explosive Forture", category: "perks", rarity: "mythical", value: 15, valueType: "keys", img: "https://www.aotrvalue.com/supportperk.png" },
+  { id: 18, name: "Font of Inspiration", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/supportperk.png" },
+  { id: 19, name: "Soulfeed", category: "perks", rarity: "mythical", value: 15, valueType: "keys", img: "https://www.aotrvalue.com/supportperk.png" },
+  { id: 20, name: "Tatsujin", category: "perks", rarity: "mythical", value: 15, valueType: "keys", img: "https://www.aotrvalue.com/supportperk.png" },
+  //serum/shards
+
+  //boosts
+
+  //artifacts
+
+  //gamepasses
+];
+
+    const rarityOrder = ["mythical", "legendary", "epic", "rare", "common"];
+
+    // Convert any value to scrolls (base unit)
+function toScrolls(value, type) {
+  return type === "keys" ? value / 3 : value;
+}
+
+// Accept either a single value or a range (min/max)
+function normalizeValue(item) {
+  if (item.min !== undefined && item.max !== undefined) {
+    return {
+      min: toScrolls(item.min, item.valueType),
+      max: toScrolls(item.max, item.valueType)
+    };
+  }
+  const v = toScrolls(item.value, item.valueType);
+  return { min: v, max: v };
+}
+
+// Format display as range "A-B scrolls / C-D keys"
+function formatRange(minScrolls, maxScrolls) {
+  const minKeys = minScrolls * 3;
+  const maxKeys = maxScrolls * 3;
+  if (minScrolls === maxScrolls) {
+    return `${minScrolls} scrolls / ${minKeys} keys`;
+  }
+  return `${minScrolls}-${maxScrolls} scrolls / ${minKeys}-${maxKeys} keys`;
+}
+
+function renderPool(category) {
+      const pool = document.getElementById("pool");
+      pool.innerHTML = "";
+
+      const filtered = items
+        .filter(i => i.category === category)
+        .sort((a, b) => rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity) || b.value - a.value);
+
+      filtered.forEach(item => {
+        const wrap = document.createElement("div");
+        wrap.className = "item-wrap";
+
+        const img = document.createElement("img");
+        img.src = item.img;
+        img.className = "item";
+
+        const range = normalizeValue(item);
+        img.dataset.min = range.min;
+        img.dataset.max = range.max;
+        img.title = formatRange(range.min, range.max);
+
+        const caption = document.createElement("div");
+        caption.className = "caption";
+        caption.textContent = item.name || "Item";
+
+        wrap.appendChild(img);
+        wrap.appendChild(caption);
+        pool.appendChild(wrap);
+      });
+    }
+
+    function calculate(boxId, valueId) {
+      const box = document.getElementById(boxId);
+      let minTotal = 0;
+      let maxTotal = 0;
+      box.querySelectorAll(".item").forEach(el => {
+        minTotal += Number(el.dataset.min);
+        maxTotal += Number(el.dataset.max);
+      });
+      document.getElementById(valueId).textContent = formatRange(minTotal, maxTotal);
+    }
+
+    new Sortable(pool, { group: "shared", animation: 150 });
+    new Sortable(tradeA, { group: "shared", animation: 150, onAdd: () => calculate("tradeA","valueA") });
+    new Sortable(tradeB, { group: "shared", animation: 150, onAdd: () => calculate("tradeB","valueB") });
+
+    document.getElementById("categorySelect").addEventListener("change", e => renderPool(e.target.value));
+
+    renderPool("families");
+  </script>
+</body>
+</html>
