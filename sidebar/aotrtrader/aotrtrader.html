@@ -36,9 +36,9 @@
   <select id="categorySelect">
     <option value="all">All</option>
     <option value="artifacts">Artifacts</option>
-    <option value="boosts">Boosts</option>
     <option value="cosmetics">Cosmetics</option>
     <option value="families">Families</option>
+    <option value="market_items">Market Items</option>
     <option value="perks">Perks</option>
     <option value="serums">Serums</option>
     <option value="shards">Shards</option>
@@ -89,10 +89,12 @@ const items = [
   { id: 25, name: "Armored Shard", category: "shards", rarity: "mythical", value: 6, valueType: "keys", img: "https://www.aotrvalue.com/ArmoredShard.png" },
   { id: 26, name: "Attack Shard", category: "shards", rarity: "mythical", value: 2, valueType: "keys", img: "https://www.aotrvalue.com/ashard.png" },
   
-  //boosts
-  { id: 27, name: "Luck Boost 2HR", category: "boosts", rarity: "legendary", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/luckboost.png" },
-  { id: 28, name: "Gold Boost 2HR", category: "boosts", rarity: "legendary", value: 14, valueType: "keys", img: "https://www.aotrvalue.com/goldboost.png" },
-  { id: 29, name: "XP Boost 2HR", category: "boosts", rarity: "legendary", value: 7, valueType: "keys", img: "https://www.aotrvalue.com/xpboost.png" },
+  //market_items
+  { id: 27, name: "Luck Boost 2HR", category: "market_items", rarity: "legendary", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/luckboost.png" },
+  { id: 28, name: "Gold Boost 2HR", category: "market_items", rarity: "legendary", value: 14, valueType: "keys", img: "https://www.aotrvalue.com/goldboost.png" },
+  { id: 29, name: "XP Boost 2HR", category: "market_items", rarity: "legendary", value: 7, valueType: "keys", img: "https://www.aotrvalue.com/xpboost.png" },
+  { id: 29, name: "Prestige Scroll", category: "market_items", rarity: "rare", value: 3, valueType: "keys", img: "https://www.aotrvalue.com/scroll.png" },
+  { id: 29, name: "Key", category: "market_items", rarity: "epic", value: 1, valueType: "keys", img: "https://www.aotrvalue.com/key.png" },
 
   //artifacts
 
@@ -171,6 +173,18 @@ function renderPool(category, term = "") {
       document.getElementById(valueId).textContent = formatRange(minTotal, maxTotal);
     }
 
+    // Click to remove items from trade boxes
+    function enableRemoval(boxId, valueId) {
+      const box = document.getElementById(boxId);
+      box.addEventListener("click", (e) => {
+        if (e.target.classList.contains("item")) {
+          e.target.parentElement.remove();
+          calculate(boxId, valueId);
+        }
+      });
+      document.getElementById(valueId).textContent = formatRange(minTotal, maxTotal);
+    }
+
     // Pool should CLONE items instead of moving them
     new Sortable(pool, { group: { name: "shared", pull: "clone", put: false }, sort: false, animation: 150 });
     new Sortable(tradeA, { group: "shared", animation: 150, onAdd: () => calculate("tradeA","valueA"), onRemove: () => calculate("tradeA","valueA"), onUpdate: () => calculate("tradeA","valueA") });
@@ -185,6 +199,9 @@ function renderPool(category, term = "") {
 
     categorySelect.addEventListener("change", refreshPool);
     searchInput.addEventListener("input", refreshPool);
+
+    enableRemoval("tradeA", "valueA");
+    enableRemoval("tradeB", "valueB");
 
     renderPool("all");
   </script>
