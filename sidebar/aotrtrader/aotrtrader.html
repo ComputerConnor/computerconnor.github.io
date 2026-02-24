@@ -38,11 +38,12 @@
     <option value="artifacts">Artifacts</option>
     <option value="cosmetics">Cosmetics</option>
     <option value="families">Families</option>
+    <option value="gamepasses">Gamepasses</option>
     <option value="market_items">Market Items</option>
     <option value="perks">Perks</option>
     <option value="serums">Serums</option>
     <option value="shards">Shards</option>
-    <option value="titans">Titans</option>
+    <option value="titan_skins">Titan Skins</option>
     <option value="weapons">Weapons</option>
   </select>
   <br />
@@ -55,6 +56,10 @@
 // Use valueType: 'scrolls' or 'keys' when defining items
 //https://www.aotrvalue.com/missing.png
 const items = [
+  //artifacts
+
+  //cosmetics
+
   //families
   { id: 1, name: "Fritz", category: "families", rarity: "mythical", value: 1450, valueType: "scrolls", img: "https://www.aotrvalue.com/fritz.png" },
   { id: 2, name: "Helos", category: "families", rarity: "mythical", min:2200, max:2300, valueType: "scrolls", img: "https://www.aotrvalue.com/helos.png" },
@@ -63,6 +68,15 @@ const items = [
   { id: 5, name: "Reiss", category: "families", rarity: "legendary", value: 10, valueType: "scrolls", img: "https://www.aotrvalue.com/reiss.png" },
   { id: 6, name: "Arlet", category: "families", rarity: "epic", min: 4, max:5, valueType: "scrolls", img: "https://www.aotrvalue.com/arlert.png" },
   { id: 7, name: "Leonhart", category: "families", rarity: "epic", min:8, max:10, valueType: "scrolls", img: "https://www.aotrvalue.com/leonhart.png" },
+
+  //gamepasses
+
+  //market_items
+  { id: 27, name: "Luck Boost 2HR", category: "market_items", rarity: "legendary", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/luckboost.png" },
+  { id: 28, name: "Gold Boost 2HR", category: "market_items", rarity: "legendary", value: 14, valueType: "keys", img: "https://www.aotrvalue.com/goldboost.png" },
+  { id: 29, name: "XP Boost 2HR", category: "market_items", rarity: "legendary", value: 7, valueType: "keys", img: "https://www.aotrvalue.com/xpboost.png" },
+  { id: 29, name: "Prestige Scroll", category: "market_items", rarity: "rare", value: 3, valueType: "keys", img: "https://www.aotrvalue.com/scroll.png" },
+  { id: 29, name: "Key", category: "market_items", rarity: "epic", value: 1, valueType: "keys", img: "https://www.aotrvalue.com/key.png" },
 
   //perks
   { id: 8, name: "Founder's Blessing", category: "perks", rarity: "mythical", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/bodyperk.png" },
@@ -89,16 +103,10 @@ const items = [
   { id: 25, name: "Armored Shard", category: "shards", rarity: "mythical", value: 6, valueType: "keys", img: "https://www.aotrvalue.com/ArmoredShard.png" },
   { id: 26, name: "Attack Shard", category: "shards", rarity: "mythical", value: 2, valueType: "keys", img: "https://www.aotrvalue.com/ashard.png" },
   
-  //market_items
-  { id: 27, name: "Luck Boost 2HR", category: "market_items", rarity: "legendary", value: 20, valueType: "keys", img: "https://www.aotrvalue.com/luckboost.png" },
-  { id: 28, name: "Gold Boost 2HR", category: "market_items", rarity: "legendary", value: 14, valueType: "keys", img: "https://www.aotrvalue.com/goldboost.png" },
-  { id: 29, name: "XP Boost 2HR", category: "market_items", rarity: "legendary", value: 7, valueType: "keys", img: "https://www.aotrvalue.com/xpboost.png" },
-  { id: 29, name: "Prestige Scroll", category: "market_items", rarity: "rare", value: 3, valueType: "keys", img: "https://www.aotrvalue.com/scroll.png" },
-  { id: 29, name: "Key", category: "market_items", rarity: "epic", value: 1, valueType: "keys", img: "https://www.aotrvalue.com/key.png" },
+//titan_skins
 
-  //artifacts
+//weapons
 
-  //gamepasses
 ];
 
     const rarityOrder = ["mythical", "legendary", "epic", "rare", "common"];
