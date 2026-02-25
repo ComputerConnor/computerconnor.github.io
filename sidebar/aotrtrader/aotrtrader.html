@@ -26,6 +26,10 @@
 </head>
 <body>
   <h1>Trade Value Calculator</h1>
+  <h2>Important Details Below:</h2>
+  <p>When inspecting item names, note that some names have symbols covered in () next to them, note the following:</p>
+  <p>If you see (*) that means that the price is <b>NOT CONFIRMED</b>, be cautious with these items and fact check the prices</p>
+  <p>If you see (+) that means according to the excel document, that is the set price, but could go for more or rise in the future, <b>keep an eye on these items</b></p>
 
   <div class="trade-area">
     <div>
@@ -68,9 +72,7 @@ const items = [
   { id: 1, name: "Scars", category: "artifacts", rarity: "mythical", value: 10, valueType: "keys", img: "https://www.aotrvalue.com/scars.png" },
   { id: 2, name: "Scarf", category: "artifacts", rarity: "mythical", value: 10, valueType: "keys", img: "https://www.aotrvalue.com/scarf.png" },
   { id: 3, name: "Hoodie", category: "artifacts", rarity: "legendary", value: 2, valueType: "keys", img: "https://www.aotrvalue.com/hoodie.png" },
-  
-  //no value yet
-  { id: 4, name: "Young", category: "artifacts", rarity: "legendary", value: 1, valueType: "keys", img: "https://www.aotrvalue.com/young.png" },
+  { id: 4, name: "Young(*)", category: "artifacts", rarity: "legendary", value: 1, valueType: "keys", img: "https://www.aotrvalue.com/young.png" },
   
   //cosmetics
   { id: 4, name: "Bambi Wings", category: "cosmetics", rarity: "legendary", min: 9900, max: 10200, valueType: "scrolls", img: "https://www.aotrvalue.com/bambi.png" },
@@ -81,16 +83,34 @@ const items = [
   { id: 4, name: "Cursed Markings", category: "cosmetics", rarity: "legendary", value: 2000, valueType: "scrolls", img: "https://www.aotrvalue.com/sukunamarking.png" },
   { id: 4, name: "Captain's Attire", category: "cosmetics", rarity: "epic", value: 1000, valueType: "scrolls", img: "https://www.aotrvalue.com/captain.png" },
   { id: 4, name: "Quincy's Attire", category: "cosmetics", rarity: "epic", value: 350, valueType: "scrolls", img: "https://www.aotrvalue.com/quincy.png" },
+  { id: 4, name: "Quincy's Hat(*)", category: "cosmetics", rarity: "common", min: 20, max: 30, valueType: "scrolls", img: "https://www.aotrvalue.com/quincyhat.png" },
+  { id: 4, name: "Kisuke's Hat", category: "cosmetics", rarity: "common", min: 10, max: 15, valueType: "scrolls", img: "https://www.aotrvalue.com/kisukehat.png" },
+  { id: 4, name: "Kisuke's Attire", category: "cosmetics", rarity: "rare", min: 30, max: 40, valueType: "scrolls", img: "https://www.aotrvalue.com/kisuke.png" },
   { id: 4, name: "Geto's Attire", category: "cosmetics", rarity: "epic", min: 240, max: 250, valueType: "scrolls", img: "https://www.aotrvalue.com/getto.png" },
   { id: 4, name: "Vizard's Mask", category: "cosmetics", rarity: "mythical", min: 225, max: 250, valueType: "scrolls", img: "https://www.aotrvalue.com/vizardmask.png" },
   { id: 4, name: "Gojo's Blindfold", category: "cosmetics", rarity: "uncommon", value: 30, valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 4, name: "Gojo's Glasses", category: "cosmetics", rarity: "common", value: 30, valueType: "scrolls", img: "https://www.aotrvalue.com/gojoglasses.png" },
   { id: 4, name: "Utahime's Attire", category: "cosmetics", rarity: "uncommon", value: 30, valueType: "scrolls", img: "https://www.aotrvalue.com/utahime.png" },
   { id: 4, name: "Toshiro Scarf", category: "cosmetics", rarity: "epic", min: 10, max: 15, valueType: "scrolls", img: "https://www.aotrvalue.com/captain.png" },
   { id: 4, name: "Giyuu's Attire(+)", category: "cosmetics", rarity: "epic", value: 35, valueType: "scrolls", img: "https://www.aotrvalue.com/quincy.png" },
   { id: 4, name: "Axe Head", category: "cosmetics", rarity: "event", value: 100, valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
   { id: 4, name: "Green Aura With Flies", category: "cosmetics", rarity: "event", value: 70, valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
-  { id: 4, name: "Cracked Shell", category: "cosmetics", rarity: "event", min: 10, max: 15, valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
   { id: 4, name: "Blade Head", category: "cosmetics", rarity: "event", min: 40, max: 45,  valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 4, name: "Santa Hat", category: "cosmetics", rarity: "event", value: 135,  valueType: "scrolls", img: "https://www.aotrvalue.com/santa.png" },
+  { id: 4, name: "Elf Hat", category: "cosmetics", rarity: "event", value: 180,  valueType: "scrolls", img: "https://www.aotrvalue.com/elf.png" },
+  { id: 4, name: "Santa Sack", category: "cosmetics", rarity: "event", value: 100,  valueType: "scrolls", img: "https://www.aotrvalue.com/santasack.png" },
+  { id: 4, name: "Cookie", category: "cosmetics", rarity: "event", value: 80,  valueType: "scrolls", img: "https://www.aotrvalue.com/cookie.png" },
+  { id: 4, name: "Hot Chocolate", category: "cosmetics", rarity: "event", value: 80,  valueType: "scrolls", img: "https://www.aotrvalue.com/hotchocolate.png" },
+  { id: 4, name: "Snowman Head", category: "cosmetics", rarity: "event", value: 135,  valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 4, name: "Witch Hat", category: "cosmetics", rarity: "event", value: 150,  valueType: "scrolls", img: "https://www.aotrvalue.com/witchhat.png" },
+  { id: 4, name: "Jack 'O Lantern", category: "cosmetics", rarity: "event", value: 120,  valueType: "scrolls", img: "https://www.aotrvalue.com/jacko.png" },
+  { id: 4, name: "Cracked Shell", category: "cosmetics", rarity: "event", min: 10, max: 15, valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 4, name: "Bunny Ears", category: "cosmetics", rarity: "event", min: 10, max: 15,  valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 4, name: "Farmer Attire", category: "cosmetics", rarity: "event", min: 10, max:15,  valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 4, name: "Easter Bunny Attire", category: "cosmetics", rarity: "event", value: 30,  valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 4, name: "Carrot", category: "cosmetics", rarity: "event", min: 10, max: 15,  valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 4, name: "Moai", category: "cosmetics", rarity: "event", value: 30,  valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 4, name: "Rabbit Foot Necklace", category: "cosmetics", rarity: "event", min: 10, max: 15,  valueType: "scrolls", img: "https://www.aotrvalue.com/rabbit.png" },
 
   //families
   { id: 5, name: "Fritz", category: "families", rarity: "mythical", value: 1450, valueType: "scrolls", img: "https://www.aotrvalue.com/fritz.png" },
@@ -137,16 +157,24 @@ const items = [
   { id: 35, name: "Attack Shard", category: "shards", rarity: "legendary", value: 2, valueType: "keys", img: "https://www.aotrvalue.com/ashard.png" },
   
   //titan_skins
-  { id: 33, name: "Oni", category: "titan_skins", rarity: "mythical", value: 1200, valueType: "scrolls", img: "https://www.aotrvalue.com/onieren.png" },
-  { id: 33, name: "Jotunn", category: "titan_skins", rarity: "mythical", min: 300, max: 320, valueType: "scrolls", img: "https://www.aotrvalue.com/jotunn.png" },
-  { id: 33, name: "Deus", category: "titan_skins", rarity: "mythical", value: 50, valueType: "scrolls", img: "https://www.aotrvalue.com/deus.png" },
-  { id: 33, name: "Moai", category: "titan_skins", rarity: "mythical", value: 30, valueType: "scrolls", img: "https://www.aotrvalue.com/moai.png" },
-  { id: 33, name: "Equinox Moon", category: "titan_skins", rarity: "mythical", value: 200, valueType: "scrolls", img: "https://www.aotrvalue.com/EquinoxMoon.png" },
-  { id: 33, name: "Grumpy", category: "titan_skins", rarity: "mythical", value: 45, valueType: "scrolls", img: "https://www.aotrvalue.com/grumpy.png" },
-  { id: 33, name: "Forsaken", category: "titan_skins", rarity: "mythical", value: 130, valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
+  { id: 33, name: "Oni Attack Skin", category: "titan_skins", rarity: "mythical", value: 1200, valueType: "scrolls", img: "https://www.aotrvalue.com/onieren.png" },
+  { id: 33, name: "Jotunn Armor Skin", category: "titan_skins", rarity: "mythical", min: 300, max: 320, valueType: "scrolls", img: "https://www.aotrvalue.com/jotunn.png" },
+  { id: 33, name: "Deus Ex Machina Female Skin", category: "titan_skins", rarity: "mythical", value: 50, valueType: "scrolls", img: "https://www.aotrvalue.com/deus.png" },
+  { id: 33, name: "Moai Armor Skin", category: "titan_skins", rarity: "mythical", value: 30, valueType: "scrolls", img: "https://www.aotrvalue.com/moai.png" },
+  { id: 33, name: "Equinox Moon Female Skin", category: "titan_skins", rarity: "mythical", value: 200, valueType: "scrolls", img: "https://www.aotrvalue.com/EquinoxMoon.png" },
+  { id: 33, name: "Grumpy Armor Skin", category: "titan_skins", rarity: "mythical", value: 45, valueType: "scrolls", img: "https://www.aotrvalue.com/grumpy.png" },
+  { id: 33, name: "Forsaken Attack Skin", category: "titan_skins", rarity: "mythical", value: 130, valueType: "scrolls", img: "https://www.aotrvalue.com/missing.png" },
 
 //weapons
-
+  { id: 33, name: "Seraphic", category: "weapons", rarity: "legendary", value: 59200, valueType: "scrolls", img: "https://www.aotrvalue.com/sera.png" },
+  { id: 33, name: "Eclipse", category: "weapons", rarity: "mythical", value: 192000, valueType: "scrolls", img: "https://www.aotrvalue.com/eclipse.png" },
+  { id: 33, name: "Third Eye", category: "weapons", rarity: "mythical", value: 448000, valueType: "scrolls", img: "https://www.aotrvalue.com/thirdeye.png" },
+  { id: 33, name: "Black Flash Aura", category: "weapons", rarity: "legendary", min: 8500, max: 8800, valueType: "scrolls", img: "https://www.aotrvalue.com/bfa.png" },
+  { id: 33, name: "Zangetsu", category: "weapons", rarity: "legendary", value: 5400, valueType: "scrolls", img: "https://www.aotrvalue.com/zangetsuL.png" },
+  { id: 33, name: "Split Soul Katana", category: "weapons", rarity: "epic", value: 400, valueType: "scrolls", img: "https://www.aotrvalue.com/soulsplit.png" },
+  { id: 33, name: "Katen", category: "weapons", rarity: "epic", value: 280, valueType: "scrolls", img: "https://www.aotrvalue.com/katen.png" },
+  { id: 33, name: "Kazeshini", category: "weapons", rarity: "rare", value: 115, valueType: "scrolls", img: "https://www.aotrvalue.com/kaze.png" },
+  { id: 33, name: "Inverted Spear of Heaven", category: "weapons", rarity: "rare", value: 75, valueType: "scrolls", img: "https://www.aotrvalue.com/isoh.png" },
 ];
 
     const rarityOrder = ["mythical", "event", "legendary", "epic", "rare", "uncommon", "common"];
